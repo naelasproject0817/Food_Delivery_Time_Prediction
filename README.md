@@ -101,14 +101,14 @@ The dataset has **1,000 orders and 9 columns**.
 
 #### 1. What does delivery time look like?
 
-![Delivery time distribution](images/01_delivery_time_distribution.png)
+![Delivery time distribution](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(14).png?raw=true.png)
 
 - The average delivery takes about **57 minutes** (median 55.5), but the spread is wide (standard deviation 22.1 minutes).
 - The distribution has a long upper tail, reaching **153 minutes**.
 
 #### 2. What drives delivery time?
 
-![Correlation with delivery time](images/02_correlation_heatmap.png)
+![Correlation with delivery time](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download.png?raw=true.png)
 
 | Feature | Correlation with delivery time |
 |---|---|
@@ -118,7 +118,7 @@ The dataset has **1,000 orders and 9 columns**.
 
 The numeric features are almost uncorrelated with each other, so each one adds different information.
 
-![Median delivery time by traffic and weather](images/03_median_by_traffic_weather.png)
+![Median delivery time by traffic and weather](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(1).png?raw=true.png)
 
 | Condition | Median delivery time |
 |---|---|
@@ -144,7 +144,7 @@ Four models were trained on the same 800 training orders and evaluated on the sa
 
 #### 4. What does the model rely on?
 
-![Linear Regression coefficients](images/04_linear_regression_coefficients.png)
+![Linear Regression coefficients](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(2).png?raw=true.png)
 
 Standardized coefficients of the Linear Regression model: the change in predicted delivery time (minutes) when a feature increases by **one standard deviation**, with other features held constant.
 
@@ -163,7 +163,7 @@ Standardized coefficients of the Linear Regression model: the change in predicte
 
 #### 5. How close are the predictions?
 
-![Actual vs predicted](images/05_actual_vs_predicted.png)
+![Actual vs predicted](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(3).png?raw=true.png)
 
 - Most points sit close to the ideal line, so predictions track real delivery times well. The typical error is about 6 minutes (MAE 6.05, RMSE 8.94).
 - A few **very long deliveries (around 90 minutes and above) are under-predicted**.
@@ -242,11 +242,15 @@ food-delivery-time-prediction/
 3. Run the cells from top to bottom. The notebook follows the order: EDA → split → cleaning → feature engineering → modeling → evaluation.
 
 ---
+## Food Delivery Time Prediction Dasboard
+![Food Delivery Time Prediction](https://github.com/user-attachments/assets/31c2df18-44ff-4a24-99fb-16ff40e16943)
 
-## Author
+---
+
+## 👩‍💻 Author
 
 **Naela Arbach**
 
-- LinkedIn: `<add your LinkedIn URL>`
-- GitHub: `<add your GitHub URL>`
-- Email: `<add your email>`
+* 💼 **LinkedIn:** [linkedin.com/in/naelaarbach](https://www.linkedin.com/in/naelaarbach/)
+* 🐙 **GitHub:** [github.com/naelasproject0817](https://github.com/naelasproject0817)
+* 📧 **Email:** [naelaproject0817@gmail.com](mailto:naelaproject0817@gmail.com)
