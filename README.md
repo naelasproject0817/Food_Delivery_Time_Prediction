@@ -142,7 +142,21 @@ Four models were trained on the same 800 training orders and evaluated on the sa
 - XGBoost and Random Forest are close behind. A simple model beating tree ensembles suggests the relationships in this dataset are mostly linear.
 - MAE is the average absolute miss in minutes. RMSE penalizes large misses more. R² is the share of variation explained.
 
-#### 4. What does the model rely on?
+#### 4. Is the result robust? 5-fold cross-validation
+
+A single 80/20 split can be lucky, so the three real models were re-tested with 5-fold cross-validation on all 1,000 orders (the baseline has no learning, so it is not included).
+
+| Model | MAE (min) | R² |
+|---|---|---|
+| **Linear Regression** | **6.68** | **0.762** |
+| XGBoost | 7.26 | 0.737 |
+| Random Forest | 7.51 | 0.723 |
+
+- The **ranking is the same** as on the single split, so the model choice does not depend on one lucky split.
+- The numbers are slightly worse than on the test split, so the realistic expectation for new data is an error of **about 6 to 7 minutes**.
+- The gap between models is small, but Linear Regression is consistently ahead and is the easiest to explain.
+  
+#### 5. What does the model rely on?
 
 ![Linear Regression coefficients](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(2).png?raw=true.png)
 
@@ -161,14 +175,16 @@ Standardized coefficients of the Linear Regression model: the change in predicte
 - More experienced couriers are slightly faster, but the effect is small.
 - A Random Forest feature importance analysis points to the same top factors (distance, then preparation time), which acts as a cross-check from a second model.
 
-#### 5. How close are the predictions?
+#### 6. How close are the predictions?
 
 ![Actual vs predicted](https://github.com/naelasproject0817/Food_Delivery_Time_Prediction/blob/main/download%20(3).png?raw=true.png)
 
-- Most points sit close to the ideal line, so predictions track real delivery times well. The typical error is about 6 minutes (MAE 6.05, RMSE 8.94).
-- A few **very long deliveries (around 90 minutes and above) are under-predicted**.
+- Most points sit close to the ideal line, so predictions track real delivery times well. The typical error is about 6 minutes (MAE 6.05, RMSE 8.94 on the test split).
+- Only **5 of 200 test orders** were under-predicted by more than 20 minutes.
+- Those 5 orders did **not** have unusual distances (average 9.51 km vs 9.90 km for all orders). What they share is conditions: **4 of 5 had bad weather** (3 of 5 foggy, versus 10% of all orders) and traffic tended to be heavier (average level 1.40 vs 0.78).
+- A possible explanation is that a linear model adds up the effect of each factor, while heavy traffic and bad weather together can make each other worse. With only 5 orders, this is an early lead, not a conclusion, and needs more data to confirm.
 
-#### 6. Predictions for new orders
+#### 7. Predictions for new orders
 
 A `preprocess_new()` function applies the same imputation, feature engineering, and column alignment used in training, so new orders can be scored directly.
 
@@ -182,9 +198,9 @@ Longer trips under tougher conditions receive longer predictions, as expected.
 
 #### Limitations
 
-- The dataset is small (1,000 orders) and the results come from a single train-test split, without cross-validation.
-- Distance appears in several features (`Distance_km`, `Dist_x_Traffic`, `Dist_per_Exp`), so coefficients should be read as indicative rather than exact.
-- The model under-predicts very long deliveries.
+- The dataset is small (1,000 orders). Cross-validation covers the three trained models only, not the baseline.
+- Distance appears in several features (`Distance_km`, `Dist_x_Traffic`, `Dist_per_Exp`), so coefficients are indicative rather than exact.
+- The pattern behind the under-predicted orders is based on only 5 orders.
 
 ---
 
