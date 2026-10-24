@@ -259,7 +259,8 @@ food-delivery-time-prediction/
 
 ---
 ## Food Delivery Time Prediction Dasboard
-![Food Delivery Time Prediction](https://github.com/user-attachments/assets/31c2df18-44ff-4a24-99fb-16ff40e16943)
+<img width="978" height="552" alt="image" src="https://github.com/user-attachments/assets/9a9977b0-02bc-438e-ba09-b1e60b76300b" />
+
 
 ---
 
